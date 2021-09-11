@@ -6,15 +6,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 @Entity
 public class ResultatDim implements Serializable {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY) 
+private int id;
 private float yn;
 private float hretunue;
 private float q;
 private float section;
 private float vitesse;
+@OneToOne
+ private Dimensionnement d;
+
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public Dimensionnement getD() {
+	return d;
+}
+public void setD(Dimensionnement d) {
+	this.d = d;
+}
 public float getYn() {
 	return yn;
 }

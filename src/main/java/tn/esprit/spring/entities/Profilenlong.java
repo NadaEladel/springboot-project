@@ -2,21 +2,18 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import org.hibernate.annotations.NaturalId;
 @Entity
-public class Profilenlong implements Serializable {
+public  class Profilenlong implements Serializable {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY) 
 private long id; 
-@Enumerated(EnumType.STRING)
-@Column(length = 20)
-private Categorie canals ;
+//@NaturalId(mutable=true)
+//@Column(name = "canals", unique=true)
+
+private  String canals ;
 private String namont ;	
 private String naval ;
 private int hauteurchute;
@@ -25,16 +22,21 @@ private int chute ;
 private int longueur;
 private float cotetnamont ;
 private float cotetnaval;
+
+
+
+//private float ξ;
+//private float G;
 public long getId() {
 	return id;
 }
 public void setId(long id) {
 	this.id = id;
 }
-public Categorie getCanals() {
+public String getCanals() {
 	return canals;
 }
-public void setCanals(Categorie canals) {
+public void setCanals(String canals) {
 	this.canals = canals;
 }
 public String getNamont() {
@@ -85,6 +87,21 @@ public float getCotetnaval() {
 public void setCotetnaval(float cotetnaval) {
 	this.cotetnaval = cotetnaval;
 }
+
+
+
+	/*public float getξ() {
+        return ξ;
+    }
+    public void setξ(float ξ) {
+        this.ξ = ξ;
+    }
+    public float getG() {
+        return G;
+    }
+    public void setG(float g) {
+        G = g;
+    }*/
 @Override
 public String toString() {
 	return "Profilenlong [id=" + id + ", canals=" + canals + ", namont=" + namont + ", naval=" + naval
@@ -92,6 +109,20 @@ public String toString() {
 			+ longueur + ", cotetnamont=" + cotetnamont + ", cotetnaval=" + cotetnaval + "]";
 }
 
+	public Profilenlong() {
+	}
 
+	public Profilenlong(long id, String canals, String namont, String naval, int hauteurchute, int nombredechute, int chute, int longueur, float cotetnamont, float cotetnaval) {
+		this.id = id;
+		this.canals = canals;
+		this.namont = namont;
+		this.naval = naval;
+		this.hauteurchute = hauteurchute;
+		this.nombredechute = nombredechute;
+		this.chute = chute;
+		this.longueur = longueur;
+		this.cotetnamont = cotetnamont;
+		this.cotetnaval = cotetnaval;
 
+	}
 }

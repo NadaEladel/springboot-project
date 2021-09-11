@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 @Entity
 public class Dimensionnement  implements Serializable {
 	@Id
@@ -27,6 +28,9 @@ public class Dimensionnement  implements Serializable {
 	private float talus;
 	private float y0;
 	private float revanche;
+	private int b;
+	@OneToOne
+	private ResultatDim f;
 	public long getId() {
 		return id;
 	}
@@ -100,6 +104,22 @@ public class Dimensionnement  implements Serializable {
 		this.revanche = revanche;
 	}
 	
+	
+	
+	public int getB() {
+		return b;
+	}
+	public void setB(int b) {
+		this.b = b;
+	}
+	
+	
+	public ResultatDim getF() {
+		return f;
+	}
+	public void setF(ResultatDim f) {
+		this.f = f;
+	}
 	@Override
 	public String toString() {
 		return "Dimensionnement [id=" + id + ", canals=" + canals + ", nœudamont=" + namont + ", nœudaval="

@@ -8,6 +8,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(	name = "users", 
 		uniqueConstraints = { 
@@ -37,6 +42,21 @@ public class User {
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToOne(cascade={CascadeType.REMOVE})
+   @JsonBackReference
+   
+   private Proposition file  ;
+	
+	
+	public Proposition getFile() {
+		return file;
+	}
+
+	public void setFile(Proposition file) {
+		this.file = file;
+	}
 
 	public User() {
 	}
